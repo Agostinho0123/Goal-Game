@@ -1,0 +1,232 @@
+/* style.css */
+
+/* Animação de fundo gradiente */
+@keyframes backgroundAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Animação de brilho neon */
+@keyframes neonFlow {
+    0% { box-shadow: 0 0 5px #6a0dad, 0 0 10px #6a0dad, 0 0 20px #6a0dad, 0 0 40px #6a0dad, 0 0 80px #6a0dad; }
+    50% { box-shadow: 0 0 10px #6a0dad, 0 0 20px #6a0dad, 0 0 40px #6a0dad, 0 0 80px #6a0dad, 0 0 160px #6a0dad; }
+    100% { box-shadow: 0 0 5px #6a0dad, 0 0 10px #6a0dad, 0 0 20px #6a0dad, 0 0 40px #6a0dad, 0 0 80px #6a0dad; }
+}
+
+/* Efeito de partículas ao clicar */
+@keyframes particleEffect {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0;
+    }
+}
+
+/* Animação de escala sutil na grade */
+@keyframes gridAnimation {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Estilo base do corpo da página */
+body {
+    background: linear-gradient(270deg, #696969, #000000);
+    background-size: 400% 400%;
+    animation: backgroundAnimation 10s ease infinite;
+}
+
+/* Estilo para bordas neon */
+.neon-border {
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px); /* Efeito de vidro */
+}
+
+/* Animação ao ativar a borda neon */
+.neon-border:active {
+    animation: neonFlow 2s infinite;
+}
+
+/* Estilo para cada item da grade */
+.grid-item {
+    transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+    border: 2px solid rgba(255, 255, 255, 0.5); /* Efeito de vidro */
+    animation: gridAnimation 2s infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem; /* Ajuste conforme necessário */
+}
+
+/* Estilo ao passar o mouse sobre o item da grade */
+.grid-item:hover {
+    transform: scale(1.1);
+    background-color: #34d399; /* Verde claro ao passar o mouse */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Brilho neon */
+}
+
+/* Estilo ao clicar no item da grade */
+.grid-item:active {
+    background-color: #059669; /* Verde mais escuro ao clicar */
+    animation: neonFlow 2s infinite;
+}
+
+/* Estilo para botões */
+.btn {
+    transition: background-color 0.3s, transform 0.3s;
+    border: 2px solid rgba(255, 255, 255, 0.5); /* Efeito de vidro */
+    position: relative;
+    overflow: hidden;
+    background-color: rgba(128, 128, 128, 0.5); /* Cinza transparente */
+    backdrop-filter: blur(10px); /* Efeito de vidro */
+}
+
+/* Estilo ao passar o mouse sobre o botão */
+.btn:hover {
+    background-color: #34d399;
+    transform: scale(1.05);
+}
+
+/* Animação ao clicar no botão */
+.btn:active {
+    animation: neonFlow 2s infinite;
+}
+
+/* Efeito de partícula ao clicar no botão */
+.btn:active::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 80%);
+    transform: translate(-50%, -50%) scale(0);
+    animation: particleEffect 0.6s forwards;
+}
+
+/* Estilo para a tela de carregamento */
+.loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+/* Estilo para cada ponto na tela de carregamento */
+.loading span {
+    display: block;
+    width: 10px;
+    height: 10px;
+    background: #00ff00;
+    margin: 3px;
+    border-radius: 50%;
+    animation: loading 0.6s infinite alternate;
+}
+
+/* Animação dos pontos na tela de carregamento */
+@keyframes loading {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.5); }
+}
+
+/* Delay para cada ponto na tela de carregamento */
+.loading span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+.loading span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+.loading span:nth-child(4) {
+    animation-delay: 0.6s;
+}
+.loading span:nth-child(5) {
+    animation-delay: 0.8s;
+}
+.loading span:nth-child(6) {
+    animation-delay: 1s;
+}
+.loading span:nth-child(7) {
+    animation-delay: 1.2s;
+}
+.loading span:nth-child(8) {
+    animation-delay: 1.4s;
+}
+.loading span:nth-child(9) {
+    animation-delay: 1.6s;
+}
+
+/* Estilo para o modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 50;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Estilo para o conteúdo do modal */
+.modal-content {
+    background-color: rgba(128, 128, 128, 0.5); /* Cinza transparente */
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.5); /* Efeito de vidro */
+    backdrop-filter: blur(10px); /* Efeito de vidro */
+}
+
+/* Animação ao ativar o conteúdo do modal */
+.modal-content:active {
+    animation: neonFlow 2s infinite;
+}
+
+/* Estilo para o botão de fechar o modal */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* Estilo ao passar o mouse sobre o botão de fechar o modal */
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Estilo para o fundo da grade */
+.grid-background {
+    background-color: rgba(128, 128, 128, 0.5); /* Cinza transparente */
+    padding: 10px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px); /* Efeito de vidro */
+}
+
+/* Estilo para o container do saldo */
+.saldo-container {
+    background-color: rgba(128, 128, 128, 0.5); /* Cinza transparente */
+    padding: 10px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px); /* Efeito de vidro */
+    border: 2px solid rgba(255, 255, 255, 0.5); /* Efeito de vidro */
+}
+
+/* Estilo para o emoji da bomba */
+.bomb-emoji {
+    font-size: 3rem; /* Ajuste conforme necessário */
+    animation: neonFlow 2s infinite;
+}
